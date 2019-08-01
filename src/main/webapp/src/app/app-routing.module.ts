@@ -5,15 +5,15 @@ import {WelcomeComponent} from './welcome/welcome.component';
 import {ErrorComponent} from './error/error.component';
 import {LogoutComponent} from './logout/logout.component';
 import {RouteGuardService} from './service/route-guard.service';
-import {CreatestandupComponent} from "./createstandup/createstandup.component";
-import {StandupsComponent} from "./standups/standups.component";
+import {CreatestandupComponent} from './createstandup/createstandup.component';
+import {StandupsComponent} from './standups/standups.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'welcome/:name', component: WelcomeComponent, canActivate: [RouteGuardService]},
   {path: 'standups', component: StandupsComponent, canActivate: [RouteGuardService]},
-  {path: 'createstandup', component: CreatestandupComponent, canActivate: [RouteGuardService]},
+  {path: 'createstandup/:id', component: CreatestandupComponent, canActivate: [RouteGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
   {path: '**', component: ErrorComponent}
 ];

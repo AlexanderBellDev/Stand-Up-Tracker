@@ -34,4 +34,13 @@ public class StandUpRestController {
      standUpService.deleteById(id);
     return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PutMapping("/users/{username}/standup/{id}")
+    public ResponseEntity<StandUp> updateStandup(@PathVariable String username, @PathVariable long id,
+                                                 @RequestBody StandUp standUp){
+
+        standUpService.updateStandUp(standUp);
+        return new ResponseEntity<>(standUp, HttpStatus.OK);
+    }
+
 }

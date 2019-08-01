@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {TodoDataService} from "../service/data/todo-data.service";
+import {TodoDataService} from '../service/data/todo-data.service';
+import {Router} from '@angular/router';
 
 export class Standup {
   constructor(
@@ -20,42 +21,42 @@ export class Standup {
   styleUrls: ['./standups.component.css']
 })
 export class StandupsComponent implements OnInit {
-  standups: Standup[];
   constructor(
-    private todoService:TodoDataService
+    private todoService: TodoDataService,
+    private router: Router
   ) { }
+  standups: Standup[];
+
+  message: string;
 
   ngOnInit() {
     this.refreshTodos();
   }
 
-  refreshTodos(){
+  refreshTodos() {
     this.todoService.retrieveAllTodos('Alex').subscribe(
       response => {
         console.log(response);
         this.standups = response;
       }
-    )
+    );
   }
 
-  deleteTodo(id){
+  deleteTodo(id) {
     console.log(`delete todo ${id}`);
-    this.todoService.deleteTodo('aspolale',id).subscribe(
+    this.todoService.deleteTodo('aspolale', id).subscribe(
       response => {
         console.log(response);
         this.message = `Delete Successful ${id}`;
         this.refreshTodos();
       }
-    )
+    );
   }
 
-  updateTodo(id){
+  updateTodo(id) {
     console.log(`update todo ${id}`);
-
-
+    this.router.navigate(['createstandup', id]);
   }
-
-  message : string;
 
 
 }

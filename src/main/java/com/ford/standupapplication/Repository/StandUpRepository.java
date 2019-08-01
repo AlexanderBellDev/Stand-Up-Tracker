@@ -11,6 +11,4 @@ import java.util.List;
 public interface StandUpRepository extends JpaRepository<StandUp, Integer> {
     @Query(value = "SELECT u FROM StandUp u WHERE u.username = ?1")
     List<StandUp> findAllStandUpUsername(String username);
-
-
 }

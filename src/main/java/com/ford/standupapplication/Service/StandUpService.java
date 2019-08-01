@@ -32,11 +32,10 @@ public class StandUpService {
     }
 
     public StandUp findById(int id) {
-        for(StandUp standUp : standUps) {
-            if(standUp.getId() == id) {
-                return standUp;
-            }
-        }
-        return null;
+        return standUpRepository.findById(id).orElse(new StandUp());
+    }
+
+    public void updateStandUp(StandUp standup){
+        standUpRepository.save(standup);
     }
 }

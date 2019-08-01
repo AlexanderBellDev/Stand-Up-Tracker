@@ -1,3 +1,23 @@
-<p>
-  createstandup works!
-</p>
+<h1>Stand Up</h1>
+
+<div class="container" *ngIf="standUp">
+  <fieldset class="form-group">
+    <label for="yesterday">Yesterday</label>
+    <textarea class="form-control" [(ngModel)]="standUp.yesterday" id="yesterday" name="yesterday" required="required"></textarea>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="today">Today</label>
+    <textarea class="form-control" [(ngModel)]="standUp.today" id="today" name="today" required="required"></textarea>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="blockers">Blockers</label>
+    <textarea class="form-control" [(ngModel)]="standUp.blockers" id="blockers" name="blockers" required="required"></textarea>
+  </fieldset>
+
+  <button class="btn btn-success" (click)="saveStandUp()">Save StandUp</button>
+
+
+
+</div>
