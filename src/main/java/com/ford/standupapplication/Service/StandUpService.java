@@ -38,4 +38,8 @@ public class StandUpService {
     public void updateStandUp(StandUp standup){
         standUpRepository.save(standup);
     }
+
+    public void createStandUp(StandUp standup){
+        standUpRepository.save(standup);
+    }
 }

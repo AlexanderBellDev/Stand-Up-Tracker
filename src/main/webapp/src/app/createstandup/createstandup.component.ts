@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class CreatestandupComponent implements OnInit {
   id: number;
   standUp: Standup;
+  username: string;
 
   constructor(
     private standupService: TodoDataService,
@@ -20,21 +21,34 @@ export class CreatestandupComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    const user =  sessionStorage.getItem('authenticateUser');
-    this.standupService.retrieveStandUp(user, this.id).subscribe(
-
+    this.username =  sessionStorage.getItem('authenticateUser');
+    console.log(this.username);
+    if (this.id !== -1) {
+    this.standupService.retrieveStandUp(this.username, this.id).subscribe(
       data => this.standUp = data
     );
+  }
   }
 
   saveStandUp() {
     const user =  sessionStorage.getItem('authenticateUser');
     console.log(this.standUp.yesterday);
-    this.standupService.updateStandUp(user, this.id, this.standUp).subscribe(
-      data => {
-        console.log(data);
-        this.routes.navigate(['standups']);
-      }
-    );
+    // tslint:disable-next-line:triple-equals
+    if (this.id == -1) {
+      console.log('user is ' + this.username );
+      this.standupService.createStandUp(this.username, this.standUp).subscribe(
+        data => {
+          console.log(data);
+          this.routes.navigate(['standups']);
+        }
+      );
+    } else {
+      this.standupService.updateStandUp(user, this.id, this.standUp).subscribe(
+        data => {
+          console.log(data);
+          this.routes.navigate(['standups']);
+        }
+      );
+    }
   }
 }

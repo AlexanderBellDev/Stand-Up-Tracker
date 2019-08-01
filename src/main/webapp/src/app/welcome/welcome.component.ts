@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {WelcomeDataService} from "../service/data/welcome-data.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {WelcomeDataService} from '../service/data/welcome-data.service';
 
 @Component({
   selector: 'app-welcome',
@@ -9,31 +9,35 @@ import {WelcomeDataService} from "../service/data/welcome-data.service";
 })
 export class WelcomeComponent implements OnInit {
 
-  welcomeMessageFromService:string;
-  customizedWelcomeMessage: string
+  welcomeMessageFromService: string;
+  customizedWelcomeMessage: string;
   name = '';
-  constructor(private route: ActivatedRoute, private welcomeDataService: WelcomeDataService) { }
+  constructor(private route: ActivatedRoute, private welcomeDataService: WelcomeDataService, private router: Router) { }
 
   ngOnInit() {
     this.name = this.route.snapshot.paramMap.get('name');
   }
 
-  getWelcomeMessage(){
-this.welcomeDataService.retrieveHelloWorldData().subscribe(response => this.handleSuccessfulResponse(response), error => this.handleErrorResponse(error))
+  getWelcomeMessage() {
+    this.welcomeDataService.retrieveHelloWorldData().subscribe(response => this.handleSuccessfulResponse(response),
+    error => this.handleErrorResponse(error));
 
   }
-
-  handleSuccessfulResponse(response){
+  handleSuccessfulResponse(response) {
     this.customizedWelcomeMessage = response.message;
   }
 
-
-  handleErrorResponse(error){
+  handleErrorResponse(error) {
     this.customizedWelcomeMessage = error.error.message;
   }
 
-  getWelcomeMessageWithParameter(){
-    this.welcomeDataService.retrieveHelloWorldDataWithPathVariable('Alex').subscribe(response => this.handleSuccessfulResponse(response), error => this.handleErrorResponse(error))
+  getWelcomeMessageWithParameter() {
+    // tslint:disable-next-line:max-line-length
+    this.welcomeDataService.retrieveHelloWorldDataWithPathVariable('Alex').subscribe(response => this.handleSuccessfulResponse(response),
+        error => this.handleErrorResponse(error));
+  }
+  addStandUp() {
+    this.router.navigate(['createstandup', -1]);
   }
 
 }

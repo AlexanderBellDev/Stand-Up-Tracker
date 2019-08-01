@@ -43,4 +43,11 @@ public class StandUpRestController {
         return new ResponseEntity<>(standUp, HttpStatus.OK);
     }
 
+    @PostMapping("/users/{username}/standup")
+    public ResponseEntity<StandUp> createStandup(@PathVariable String username, @RequestBody StandUp standUp){
+        standUp.setUsername(username);
+        standUpService.createStandUp(standUp);
+        return new ResponseEntity<>(standUp, HttpStatus.OK);
+    }
+
 }

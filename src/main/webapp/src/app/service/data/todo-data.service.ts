@@ -25,4 +25,8 @@ export class TodoDataService {
   updateStandUp(username, id, standUp) {
     return this.http.put(`http://localhost:8080/users/${username}/standup/${id}`, standUp);
   }
+
+  createStandUp(username, standUp) {
+    return this.http.post(`http://localhost:8080/users/${username}/standup`, standUp);
+  }
 }

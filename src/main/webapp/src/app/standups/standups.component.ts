@@ -24,7 +24,9 @@ export class StandupsComponent implements OnInit {
   constructor(
     private todoService: TodoDataService,
     private router: Router
-  ) { }
+  ) {
+  }
+
   standups: Standup[];
 
   message: string;
@@ -34,7 +36,7 @@ export class StandupsComponent implements OnInit {
   }
 
   refreshTodos() {
-    this.todoService.retrieveAllTodos('Alex').subscribe(
+    this.todoService.retrieveAllTodos(sessionStorage.getItem('authenticateUser')).subscribe(
       response => {
         console.log(response);
         this.standups = response;
@@ -58,5 +60,7 @@ export class StandupsComponent implements OnInit {
     this.router.navigate(['createstandup', id]);
   }
 
-
+  addStandUp() {
+    this.router.navigate(['createstandup', -1]);
+  }
 }

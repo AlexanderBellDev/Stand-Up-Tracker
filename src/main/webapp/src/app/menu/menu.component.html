@@ -4,7 +4,7 @@
     <ul class="navbar-nav">
       <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/welcome/Alex" class="nav-link">Home</a></li>
       <li><a  *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/standups" class="nav-link">Existing Stand-Ups</a></li>
-      <li><a  *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/createstandup" class="nav-link">New Stand-Up</a></li>
+      <li><a  *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/createstandup/-1" class="nav-link">New Stand-Up</a></li>
     </ul>
 
     <ul class="navbar-nav navbar-collapse justify-content-end">
