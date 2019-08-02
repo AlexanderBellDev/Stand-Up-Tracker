@@ -2,38 +2,41 @@
 <h1>My Stand-Ups</h1>
 <br>
 <div class="container">
-  <div class="alert alert-warning" *ngIf="message">{{message}}</div>
-  <div>
-    <div class="container">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Yesterday</th>
-          <th>Today</th>
-          <th>Blockers / Issues</th>
-          <th>Date</th>
-          <th>Update</th>
-          <th>Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let standup of standups">
-          <td>{{standup.yesterday}}</td>
-          <td>{{standup.today}}</td>
-          <td>{{standup.blockers}}</td>
-          <td>{{standup.date}}</td>
-          <td><button (click)="updateTodo(standup.id)" class="btn btn-success">Update</button></td>
-          <td><button (click)="deleteTodo(standup.id)" class="btn btn-warning">Delete</button></td>
-        </tr>
-        </tbody>
-      </table>
+  <form>
+    <div class="alert alert-warning" *ngIf="message">{{message}}</div>
+    <div>
+      <div class="container">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Yesterday</th>
+            <th>Today</th>
+            <th>Blockers / Issues</th>
+            <th>Date</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let standup of standups">
+            <td>{{standup.yesterday}}</td>
+            <td>{{standup.today}}</td>
+            <td>{{standup.blockers}}</td>
+            <td>{{standup.date}}</td>
+            <td><button (click)="updateTodo(standup.id)" class="btn btn-success">Update</button></td>
+            <td><button (click)="deleteTodo(standup.id)" class="btn btn-warning">Delete</button></td>
+          </tr>
+          </tbody>
+        </table>
 
-      <div class="row">
-        <button (click)="addStandUp()" class="btn btn-success">Create new StandUp</button>
+        <div class="row">
+          <button (click)="addStandUp()" class="btn btn-success">Create new StandUp</button>
+        </div>
+
+
       </div>
 
-
     </div>
+  </form>
 
-  </div>
 </div>

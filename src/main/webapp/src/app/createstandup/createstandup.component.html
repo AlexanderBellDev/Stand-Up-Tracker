@@ -1,22 +1,26 @@
 <h1>Stand Up</h1>
 
 <div class="container" *ngIf="standUp">
-  <fieldset class="form-group">
-    <label for="yesterday">Yesterday</label>
-    <textarea class="form-control" [(ngModel)]="standUp.yesterday" id="yesterday" name="yesterday" required="required"></textarea>
-  </fieldset>
+  <div class="alert alert-warning" *ngIf="standUpForm.submitted && standUpForm.invalid">Yesterday and Today must have a value</div>
+  <form (ngSubmit)="!standUpForm.invalid && saveStandUp()" #standUpForm="ngForm">
+    <fieldset class="form-group">
+      <label for="yesterday">Yesterday</label>
+      <textarea class="form-control" [(ngModel)]="standUp.yesterday" id="yesterday" name="yesterday" required="required"></textarea>
+    </fieldset>
 
-  <fieldset class="form-group">
-    <label for="today">Today</label>
-    <textarea class="form-control" [(ngModel)]="standUp.today" id="today" name="today" required="required"></textarea>
-  </fieldset>
+    <fieldset class="form-group">
+      <label for="today">Today</label>
+      <textarea class="form-control" [(ngModel)]="standUp.today" id="today" name="today" required="required"></textarea>
+    </fieldset>
 
-  <fieldset class="form-group">
-    <label for="blockers">Blockers</label>
-    <textarea class="form-control" [(ngModel)]="standUp.blockers" id="blockers" name="blockers" required="required"></textarea>
-  </fieldset>
+    <fieldset class="form-group">
+      <label for="blockers">Blockers</label>
+      <textarea class="form-control" [(ngModel)]="standUp.blockers" id="blockers" name="blockers"></textarea>
+    </fieldset>
 
-  <button class="btn btn-success" (click)="saveStandUp()">Save StandUp</button>
+    <button type="submit" class="btn btn-success">Save StandUp</button>
+  </form>
+
 
 
 
