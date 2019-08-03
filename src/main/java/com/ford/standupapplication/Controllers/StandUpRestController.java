@@ -1,5 +1,6 @@
 package com.ford.standupapplication.Controllers;
 
+import com.ford.standupapplication.Model.Basic;
 import com.ford.standupapplication.Model.StandUp;
 import com.ford.standupapplication.Service.StandUpService;
 import org.springframework.http.HttpStatus;
@@ -49,5 +50,11 @@ public class StandUpRestController {
         standUpService.createStandUp(standUp);
         return new ResponseEntity<>(standUp, HttpStatus.OK);
     }
+
+    @GetMapping("/basicauth")
+    public Basic basic() {
+        return new Basic("You are authenticated");
+    }
+
 
 }

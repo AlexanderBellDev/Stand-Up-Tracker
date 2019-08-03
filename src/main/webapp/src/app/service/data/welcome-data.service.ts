@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 export class HelloWorldBean {
-  constructor(public message:string){
+  constructor(public message: string) {
 
   }
 }
