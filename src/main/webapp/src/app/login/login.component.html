@@ -2,7 +2,8 @@
 <h2>
   Welcome to Stand Up Tracker - Please Login!
 </h2>
-  <form>
+<div *ngIf="invalidLogin" class="alert alert-warning">Credentials Incorrect</div>
+<form>
     <h4>{{message}}</h4>
     <div class="form-group">
       <label for="username">Username</label>
